@@ -16,9 +16,20 @@ cheatmap <- function(matrix,
                      add_cluster_n = T, 
                      ...) {
   
+  # Make matrix 
+  if (tibble::is_tibble(matrix)) {
+    matrix_try <- msTools::tibble2matrix(matrix)
+    
+    if (is.numeric(matrix_try)) {
+      matrix <- matrix_try
+    } else {
+      warning("Provided tibble could not be converted to a matrix. Trying to generate a heatmap regardless.")
+    }
+  }
+  
   # Set defaults 
-  show_row_names <- if (nrow(matrix) > 64) F else T
-  show_column_names <- if (ncol(matrix) > 64) F else T
+  show_row_names <- if (nrow(matrix) > 100) F else T
+  show_column_names <- if (ncol(matrix) > 200) F else T
   use_raster <- if (nrow(matrix) > 2000) T else F
   
   
