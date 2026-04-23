@@ -430,7 +430,7 @@ plot_protein_sequence <- function(data,
   # Protein range
   if (!hasArg(protein_range) && 
       "data_protein_annotation" %in% names(data) && 
-      "Length" %in% data$data_protein_annotation) {
+      "Length" %in% names(data$data_protein_annotation)) {
     protein_range <- c(1, data$data_protein_annotation %>% 
                          filter(Protein.Group == protein) %>% 
                          pull(Length) %>% 
@@ -442,7 +442,7 @@ plot_protein_sequence <- function(data,
   # Title 
   if (!hasArg(title) && 
       "data_peptides" %in% names(data) && 
-      "Genes" %in% data$data_peptides) {
+      "Genes" %in% names(data$data_peptides)) {
     title <- data$data_peptides %>% 
       filter(Protein.Group == protein) %>% 
       pull(Genes) %>% 
@@ -497,7 +497,9 @@ plot_protein_sequence <- function(data,
                             base_size = 16, 
                             #protein_range = protein_range, 
                             add.length = 0.45, 
-                            add.labels = protein_range[1] != 1, 
+                            add.labels = replace(protein_range[1], 
+                                                 is.na(protein_range[1]), 
+                                                 1) != 1, 
                             label = "label") + 
       labs(y = expression(paste(log[2], " fold-change")))
     
@@ -522,7 +524,9 @@ plot_protein_sequence <- function(data,
                             base_size = 16, 
                             #protein_range = protein_range, 
                             add.length = 0.45, 
-                            add.labels = protein_range[1] != 1, 
+                            add.labels = replace(protein_range[1], 
+                                                 is.na(protein_range[1]), 
+                                                 1) != 1, 
                             label = "label") + 
       labs(y = expression(paste("signed ", pEC[50])))
     
