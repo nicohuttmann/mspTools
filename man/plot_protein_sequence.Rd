@@ -8,7 +8,7 @@ plot_protein_sequence(
   data,
   data_features,
   protein = "P49841",
-  protein_range = c(NA, NA),
+  protein_range,
   title
 )
 }

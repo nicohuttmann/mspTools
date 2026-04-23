@@ -284,6 +284,131 @@
 }
 
 
+#' Title
+#'
+#' @param data_peptides 
+#' @param p 
+#' @param yvalue 
+#' @param color 
+#' @param color.scale 
+#' @param linewidth 
+#' @param alpha 
+#' @param Start 
+#' @param End 
+#' @param add.length 
+#' @param title 
+#' @param base_size 
+#' @param min_y_range 
+#' @param protein_width 
+#' @param protein_range 
+#' @param add.labels 
+#' @param label 
+#' @param label.size 
+#' @param nudge_x 
+#' @param nudge_y 
+#' @param hjust 
+#' @param vjust 
+#' @param direction 
+#' @param min.segment.length 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+.plot_peptides_on_seq <- function(data_peptides, 
+                                  p, 
+                                  yvalue = "estimate", 
+                                  color = "regulation", 
+                                  color.scale = NULL, 
+                                  linewidth = "peptide_group", 
+                                  alpha = "peptide_group", 
+                                  Start = "Start", 
+                                  End = "End", 
+                                  add.length = 0, 
+                                  title = "", 
+                                  base_size = 16, 
+                                  min_y_range = 1, 
+                                  protein_width = 0.6, 
+                                  protein_range, 
+                                  add.labels = F, 
+                                  label = "regulation", 
+                                  label.size = 5, 
+                                  nudge_x = 0, 
+                                  nudge_y = 0, 
+                                  hjust = 0,
+                                  vjust = 0, 
+                                  direction = "both", 
+                                  min.segment.length = 2) {
+  
+  
+  data_p <- data_peptides %>% 
+    mutate(yvalue = !!rlang::sym(yvalue), 
+           Start = !!rlang::sym(Start), 
+           End = !!rlang::sym(End), 
+           color = !!rlang::sym(color), 
+           alpha = !!rlang::sym(alpha), 
+           linewidth = !!rlang::sym(linewidth), 
+           label = !!rlang::sym(label))
+  
+  # add if
+  if (!hasArg(protein_range))
+    protein_range <- c(min(data_p$Start), 
+                       max(data_p$End))
+  
+  # new plot if nothing given 
+  if (!hasArg(p))
+    p_peptides <- ggplot() + 
+      annotate("rect", 
+               xmin = protein_range[1], 
+               xmax = protein_range[2], 
+               ymin = - protein_width / 2, 
+               ymax =   protein_width / 2, 
+               fill = "grey")
+  else 
+    p_peptides <- p
+  
+  # Add peptides 
+  p_peptides <- p_peptides + 
+    geom_segment(aes(x = Start - add.length, 
+                     xend = End + add.length, 
+                     y = yvalue, 
+                     yend = yvalue, 
+                     color = color, 
+                     alpha = alpha, 
+                     linewidth = linewidth), 
+                 data = data_p) + 
+    theme_classic(base_size = base_size) + 
+    scale_color_manual(values = color.scale) + 
+    scale_alpha_manual(values = c(regular = 0.9, 
+                                  highlight = 1)) + 
+    scale_linewidth_manual(values = c(regular = 1.2, 
+                                      highlight = 2.2)) + 
+    scale_x_continuous(expand = c(0, 0)) + 
+    coord_cartesian(xlim = protein_range, 
+                    ylim = c(min(c(-min_y_range, data_p$yvalue), na.rm = T), 
+                             max(c(min_y_range, data_p$yvalue), na.rm = T))) + 
+    labs(color = color)
+  
+  # Annotate peptides 
+  if (add.labels)
+    p_peptides <- p_peptides + 
+    ggrepel::geom_text_repel(ggplot2::aes(x = End + add.length, 
+                                          y = yvalue, 
+                                          label = label), 
+                             data = data_p, 
+                             size = label.size, 
+                             nudge_x = nudge_x,
+                             nudge_y = nudge_y,
+                             hjust = hjust,
+                             vjust = vjust, 
+                             direction = direction, 
+                             min.segment.length = min.segment.length)
+  
+  return(p_peptides)
+  
+}
+
+
 #' Plot PELSA results on a protein sequence including protein domain features 
 #'
 #' @param data 
@@ -299,7 +424,7 @@
 plot_protein_sequence <- function(data, 
                                   data_features, 
                                   protein = "P49841", 
-                                  protein_range = c(NA, NA), 
+                                  protein_range, 
                                   title) {
   
   # Protein range
