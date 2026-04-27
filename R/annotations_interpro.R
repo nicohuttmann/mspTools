@@ -27,6 +27,14 @@ get_InterPro_data_from_UniProt <- function(accession,
                                            export_as_UniProt = F, 
                                            silent = T) {
   
+  if (!hasArg(accession)) {
+    if (is.null(data_UniProt)) {
+      stop("You have to privide protein IDs via the <accesion> or the <data_UniProt> arguments.")
+    } else {
+      accession <- data_UniProt$Entry
+    }
+  }
+  
   # Only query unique accessions 
   accession_query <- unique(accession)
   
