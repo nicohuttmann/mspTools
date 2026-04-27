@@ -45,12 +45,17 @@ get_InterPro_data_from_UniProt <- function(accession,
                                     "sequence"), 
                          max.query = max.query)
     }
+  } else {
+    data_UniProt <- data_UniProt %>% 
+      dplyr::filter(Entry %in% accession_query) 
+      
   }
   
   # Download UniParc data individually 
   data_UniParc <- data_UniProt %>% 
     dplyr::filter(!is.na(UniParc)) %>% 
     dplyr::pull(UniParc) %>% 
+    unique() %>% 
     setNames(., .) %>% 
     purrr::map(
       \(x) download_UniParc_sequence_features(
