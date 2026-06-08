@@ -1,14 +1,16 @@
 # mspTools
 
-A library of functions to analyze, visualize and export proteomics data 
+A biology-focused library of functions to analyze, visualize and report proteomics data. 
 
 # Installation
 You can install this package from GitHub via:
 
 ```
-pak::pkg_install("nicohuttmann/mspTools")
-```
- or the old-fashioned way 
-```
 devtools::install_github("nicohuttmann/mspTools")
+```
+
+or the new, fast way: 
+
+```
+pak::pkg_install("nicohuttmann/mspTools")
 ```
