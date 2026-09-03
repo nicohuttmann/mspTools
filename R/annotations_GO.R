@@ -97,8 +97,8 @@ extract_UniProt_GO2list <- function(data_UniProt_GO,
 
 #' Title
 #'
-#' @param goids 
-#' @param ontology 
+#' @param goids vector of GO identifiers
+#' @param ontology ontology to keep ("BP", "MF" or "CC")
 #'
 #' @returns
 #' @export
@@ -142,8 +142,8 @@ GO_add_ancestors <- function(goids, ontology = "CC") {
 
 #' Title
 #'
-#' @param goids 
-#' @param ontology 
+#' @param goids vector of GO identifiers
+#' @param ontology ontology to keep ("BP", "MF" or "CC")
 #'
 #' @returns
 #' @export
@@ -188,7 +188,7 @@ GO_filter_ontology <- function(goids, ontology = "CC") {
 
 #' Title
 #'
-#' @param goids 
+#' @param goids vector of GO identifiers
 #'
 #' @returns
 #' @export
@@ -227,11 +227,11 @@ GO_append_description <- function(goids) {
 
 #' Title
 #'
-#' @param data_UniProt_GO 
-#' @param term_column 
-#' @param ontologies 
-#' @param GO_col 
-#' @param sep 
+#' @param data_UniProt_GO tibble of UniProt records containing a GO column
+#' @param term_column name of the column holding the term identifiers
+#' @param ontologies ontologies to keep ("BP", "MF" and/or "CC")
+#' @param GO_col name of the column holding the GO annotation
+#' @param sep separator between GO entries within a cell
 #'
 #' @returns
 #' @export

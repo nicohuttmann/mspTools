@@ -13,15 +13,15 @@ plot_protein_sequence(
 )
 }
 \arguments{
-\item{data}{}
+\item{data}{dataset or list holding the peptide data}
 
-\item{data_features}{}
+\item{data_features}{tibble of sequence features to draw}
 
-\item{protein}{}
+\item{protein}{protein group to plot}
 
-\item{protein_range}{}
+\item{protein_range}{residue range to show, as c(start, end)}
 
-\item{title}{}
+\item{title}{plot title}
 }
 \description{
 Plot PELSA results on a protein sequence including protein domain features

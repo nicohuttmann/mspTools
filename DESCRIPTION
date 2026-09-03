@@ -1,20 +1,47 @@
 Package: mspTools
-Title: Biology-focused functions to analyze proteomics data
+Title: Proteomics Analysis and Annotation Tools
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person("Nico", "Hüttmann", , "huttmann.nico@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9321-2675"))
-Description: This package contains biology-focused functions to analyze proteomics data 
-License: MIT
+Description: Annotation and visualisation tools for proteomics data, built on
+    'msTools' and 'msArrow'. Retrieves UniProt, GO and InterPro annotations,
+    and provides heatmaps and PELSA-style plots on top of the dataset store.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Suggests: 
-    knitr
-    rmarkdown
-VignetteBuilder: knitr
-Imports:
-    tidyverse
-Remotes:
-    nicohuttmann/msArrow
-    nicohuttmann/msTools
 RoxygenNote: 7.3.3
+URL: https://github.com/nicohuttmann/mspTools,
+    https://nicohuttmann.github.io/mspTools/
+BugReports: https://github.com/nicohuttmann/mspTools/issues
+biocViews:
+Imports:
+    AnnotationDbi,
+    ComplexHeatmap,
+    dplyr,
+    GO.db,
+    ggplot2,
+    ggrepel,
+    ggsci,
+    httr2,
+    magrittr,
+    methods,
+    msTools,
+    purrr,
+    readr,
+    rlang,
+    stats,
+    stringr,
+    tibble,
+    tidyr,
+    vroom
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    withr
+Remotes:
+    nicohuttmann/msArrow,
+    nicohuttmann/msTools
+VignetteBuilder: knitr
+Config/testthat/edition: 3

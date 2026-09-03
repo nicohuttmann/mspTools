@@ -17,12 +17,12 @@ get_InterPro_data_from_UniProt(
 )
 }
 \arguments{
-\item{accession}{}
+\item{accession}{UniProt accession/s to retrieve}
 
 \item{data_UniProt}{(optional) predownloaded UniProt data with
 download_UniProt_data() or download_UniProt_data_1o()}
 
-\item{taxon_ids}{}
+\item{taxon_ids}{taxon identifier/s to restrict the query to}
 
 \item{max.query}{maximum}
 
@@ -31,6 +31,8 @@ download_UniProt_data() or download_UniProt_data_1o()}
 \item{separate.multiple.sites}{split disconnected features into multiple rows}
 
 \item{split.position}{add columns 'from' and 'to'}
+
+\item{export_as_UniProt}{return the result shaped like a UniProt table}
 
 \item{silent}{Suppress messages?}
 }

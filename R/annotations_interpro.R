@@ -1,14 +1,15 @@
 #' Title
 #'
-#' @param accession 
+#' @param accession UniProt accession/s to retrieve
 #' @param data_UniProt (optional) predownloaded UniProt data with 
 #' download_UniProt_data() or download_UniProt_data_1o()
-#' @param taxon_ids 
+#' @param taxon_ids taxon identifier/s to restrict the query to
 #' @param max.query maximum
 #' @param keep.empty Keep Ids without data?
 #' @param separate.multiple.sites split disconnected features into multiple rows
 #' @param split.position add columns 'from' and 'to' 
 #' @param silent Suppress messages?
+#' @param export_as_UniProt return the result shaped like a UniProt table
 #'
 #' @returns
 #' @export
@@ -155,7 +156,6 @@ download_UniParc_sequence_features <- function(uniparc_id,
   
   
   # Following code from https://www.uniprot.org/api-documentation/uniparc 
-  require(httr2)
   
   base_url <- paste0("https://rest.uniprot.org/uniparc/", 
                      uniparc_id, "/light")

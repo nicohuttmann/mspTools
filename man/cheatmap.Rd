@@ -7,15 +7,15 @@
 cheatmap(matrix, draw = T, show_clusters = NULL, add_cluster_n = T, ...)
 }
 \arguments{
-\item{matrix}{}
+\item{matrix}{numeric matrix to draw}
 
-\item{draw}{}
+\item{draw}{draw the heatmap, or return the object unrendered}
 
-\item{show_clusters}{}
+\item{show_clusters}{annotate the cluster each row belongs to}
 
-\item{add_cluster_n}{}
+\item{add_cluster_n}{add the number of rows per cluster to the annotation}
 
-\item{...}{}
+\item{...}{additional arguments for ComplexHeatmap::Heatmap()}
 }
 \description{
 Title

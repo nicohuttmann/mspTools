@@ -7,7 +7,7 @@
 GO_append_description(goids)
 }
 \arguments{
-\item{goids}{}
+\item{goids}{vector of GO identifiers}
 }
 \description{
 Title

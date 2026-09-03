@@ -7,9 +7,9 @@
 .rcol(n = 1, seed = 42)
 }
 \arguments{
-\item{n}{}
+\item{n}{number of colours to return}
 
-\item{seed}{}
+\item{seed}{random seed, so the colours are reproducible}
 }
 \description{
 Returns a randomly generated vector of colors sorted by hue

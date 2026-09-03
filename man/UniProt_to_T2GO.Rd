@@ -13,15 +13,15 @@ UniProt_to_T2GO(
 )
 }
 \arguments{
-\item{data_UniProt_GO}{}
+\item{data_UniProt_GO}{tibble of UniProt records containing a GO column}
 
-\item{term_column}{}
+\item{term_column}{name of the column holding the term identifiers}
 
-\item{ontologies}{}
+\item{ontologies}{ontologies to keep ("BP", "MF" and/or "CC")}
 
-\item{GO_col}{}
+\item{GO_col}{name of the column holding the GO annotation}
 
-\item{sep}{}
+\item{sep}{separator between GO entries within a cell}
 }
 \description{
 Title

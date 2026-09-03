@@ -1,7 +1,7 @@
 #' Title
 #'
-#' @param dir 
-#' @param backup_dir 
+#' @param dir folder holding the scripts
+#' @param backup_dir folder the backup is written to
 #'
 #' @returns
 #' @export

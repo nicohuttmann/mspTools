@@ -1,13 +1,16 @@
 #' Creates limma contrasts from design matrix 
 #'
-#' @param design 
-#' @param combinations 
-#' @param copy2clipboard 
+#' @param design design matrix
+#' @param combinations contrasts to build, as pairs of design columns
+#' @param copy2clipboard copy the code to the clipboard
 #'
 #' @return
 #' @export
 #'
-#' @examples .cat_contrasts.fit(limma_list[["design"]])
+#' @examples
+#' \dontrun{
+#'   .cat_contrasts.fit(limma_list[["design"]])
+#' }
 .cat_contrasts.fit <- function(design, combinations = tibble(a=c(), b=c()), copy2clipboard = T) {
   
   if (nrow(combinations) == 0) {
@@ -45,8 +48,8 @@
 #' Title
 #'
 #' @param x vector containing values from 0 to 1
-#' @param steps 
-#' @param as_factor 
+#' @param steps breakpoints used to bin the values
+#' @param as_factor return a factor instead of a character vector
 #'
 #' @returns
 #' @export

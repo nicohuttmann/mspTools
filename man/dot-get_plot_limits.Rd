@@ -7,7 +7,7 @@
 .get_plot_limits(plot)
 }
 \arguments{
-\item{plot}{}
+\item{plot}{a ggplot object}
 }
 \description{
 Title

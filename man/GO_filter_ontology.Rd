@@ -7,9 +7,9 @@
 GO_filter_ontology(goids, ontology = "CC")
 }
 \arguments{
-\item{goids}{}
+\item{goids}{vector of GO identifiers}
 
-\item{ontology}{}
+\item{ontology}{ontology to keep ("BP", "MF" or "CC")}
 }
 \description{
 Title

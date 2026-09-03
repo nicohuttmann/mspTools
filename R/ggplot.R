@@ -1,7 +1,7 @@
 #' Returns a randomly generated vector of colors sorted by hue
 #'
-#' @param n 
-#' @param seed 
+#' @param n number of colours to return
+#' @param seed random seed, so the colours are reproducible
 #'
 #' @return
 #' @export
@@ -61,7 +61,7 @@
 
 #' Title
 #'
-#' @param plot 
+#' @param plot a ggplot object
 #'
 #' @return
 #' @export
@@ -88,6 +88,7 @@
 #' @param axis.unit.ratio ratio between x- and y-axis units
 #' @param expand.x.axis expand x.axis (see scale_x_continuous)
 #' @param expand.y.axis expand x.axis (see scale_y_continuous)
+#' @param coord_fun coordinate function to apply (e.g. ggplot2::coord_cartesian)
 #'
 #' @return
 #' @export
@@ -231,18 +232,19 @@
   
   # Return
   return(p)
-  
+
 }
 
 
 
-#' Align axis limits of a list of plots 
+#' Align axis limits of a list of plots
 #'
 #' @param list_p list of ggplot objects 
 #' @param x.symmetric set x axis limits to absolute max 
 #' @param adjust.x.limits function or list containing two functions 
 #' to be applied to the existing x-axis limits
 #' @param adjust.y.limits function or list containing two functions 
+#' @param ... additional arguments passed on to the axis setters
 #' to be applied to the existing y-axis limits 
 #'
 #' @return
@@ -311,11 +313,11 @@
 
 #' Title
 #'
-#' @param p 
-#' @param PCx 
-#' @param PCy 
-#' @param sdev 
-#' @param digits 
+#' @param p a ggplot object to add to
+#' @param PCx principal component shown on the x axis
+#' @param PCy principal component shown on the y axis
+#' @param sdev vector of standard deviations from the PCA
+#' @param digits number of digits shown in the axis labels
 #'
 #' @return
 #' @export
@@ -354,9 +356,9 @@
           with(list(x = sdev), 
                x^2 / sum(x^2))[PCy] * 100, digits), "%)"))
   
-  # Return 
+  # Return
   return(p)
-  
+
 }
 
 

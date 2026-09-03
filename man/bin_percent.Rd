@@ -9,9 +9,9 @@ bin_percent(x, steps = c(0, 0.25, 0.5, 0.75, 1), as_factor = F)
 \arguments{
 \item{x}{vector containing values from 0 to 1}
 
-\item{steps}{}
+\item{steps}{breakpoints used to bin the values}
 
-\item{as_factor}{}
+\item{as_factor}{return a factor instead of a character vector}
 }
 \description{
 Title

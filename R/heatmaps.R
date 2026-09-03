@@ -1,10 +1,10 @@
 #' Title
 #'
-#' @param matrix 
-#' @param draw 
-#' @param show_clusters 
-#' @param add_cluster_n 
-#' @param ... 
+#' @param matrix numeric matrix to draw
+#' @param draw draw the heatmap, or return the object unrendered
+#' @param show_clusters annotate the cluster each row belongs to
+#' @param add_cluster_n add the number of rows per cluster to the annotation
+#' @param ... additional arguments for ComplexHeatmap::Heatmap()
 #'
 #' @returns
 #' @export

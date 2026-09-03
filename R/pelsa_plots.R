@@ -1,13 +1,13 @@
 #' Title
 #'
-#' @param protein_range 
-#' @param protein_width 
-#' @param add.length 
-#' @param x_lab 
-#' @param y_lab 
-#' @param color 
-#' @param alpha 
-#' @param base_size 
+#' @param protein_range residue range to show, as c(start, end)
+#' @param protein_width height of the protein bar
+#' @param add.length padding added to each end of the sequence axis
+#' @param x_lab x axis label
+#' @param y_lab y axis label
+#' @param color column mapped to colour
+#' @param alpha column mapped to transparency
+#' @param base_size base font size of the theme
 #'
 #' @returns
 #' @export
@@ -137,7 +137,7 @@
 
 #' Title
 #'
-#' @param vector_UniProt 
+#' @param vector_UniProt character vector of UniProt feature strings
 #'
 #' @returns
 #' @export
@@ -161,19 +161,19 @@
 
 #' Title
 #'
-#' @param data_sites 
-#' @param p 
-#' @param name 
-#' @param start 
-#' @param end 
-#' @param add.length 
-#' @param merge_name_position 
-#' @param protein_width 
-#' @param base_size 
-#' @param multiple_scaling_factor 
-#' @param legend.position 
-#' @param legend_width 
-#' @param colors_manual 
+#' @param data_sites tibble of sequence features to draw
+#' @param p a ggplot object to add to
+#' @param name column holding the feature name
+#' @param start column holding the feature start position
+#' @param end column holding the feature end position
+#' @param add.length padding added to each end of the sequence axis
+#' @param merge_name_position merge features that share a name and position
+#' @param protein_width height of the protein bar
+#' @param base_size base font size of the theme
+#' @param multiple_scaling_factor vertical scaling applied when features overlap
+#' @param legend.position legend position, passed to ggplot2::theme()
+#' @param legend_width width of the legend
+#' @param colors_manual named vector of colours for the features
 #'
 #' @returns
 #' @export
@@ -286,30 +286,30 @@
 
 #' Title
 #'
-#' @param data_peptides 
-#' @param p 
-#' @param yvalue 
-#' @param color 
-#' @param color.scale 
-#' @param linewidth 
-#' @param alpha 
-#' @param Start 
-#' @param End 
-#' @param add.length 
-#' @param title 
-#' @param base_size 
-#' @param min_y_range 
-#' @param protein_width 
-#' @param protein_range 
-#' @param add.labels 
-#' @param label 
-#' @param label.size 
-#' @param nudge_x 
-#' @param nudge_y 
-#' @param hjust 
-#' @param vjust 
-#' @param direction 
-#' @param min.segment.length 
+#' @param data_peptides tibble of peptides to draw on the sequence
+#' @param p a ggplot object to add to
+#' @param yvalue column mapped to the y axis
+#' @param color column mapped to colour
+#' @param color.scale named vector of colours for <color>
+#' @param linewidth column mapped to line width
+#' @param alpha column mapped to transparency
+#' @param Start column holding the peptide start position
+#' @param End column holding the peptide end position
+#' @param add.length padding added to each end of the sequence axis
+#' @param title plot title
+#' @param base_size base font size of the theme
+#' @param min_y_range minimum span of the y axis
+#' @param protein_width height of the protein bar
+#' @param protein_range residue range to show, as c(start, end)
+#' @param add.labels label the peptides
+#' @param label column holding the label text
+#' @param label.size text size of the labels
+#' @param nudge_x horizontal nudge passed to ggrepel
+#' @param nudge_y vertical nudge passed to ggrepel
+#' @param hjust horizontal justification of the labels
+#' @param vjust vertical justification of the labels
+#' @param direction direction ggrepel may move labels in ("both", "x" or "y")
+#' @param min.segment.length shortest leader line ggrepel will draw
 #'
 #' @returns
 #' @export
@@ -411,11 +411,11 @@
 
 #' Plot PELSA results on a protein sequence including protein domain features 
 #'
-#' @param data 
-#' @param data_features 
-#' @param protein 
-#' @param protein_range 
-#' @param title 
+#' @param data dataset or list holding the peptide data
+#' @param data_features tibble of sequence features to draw
+#' @param protein protein group to plot
+#' @param protein_range residue range to show, as c(start, end)
+#' @param title plot title
 #'
 #' @returns
 #' @export

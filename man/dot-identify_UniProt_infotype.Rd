@@ -7,7 +7,7 @@
 .identify_UniProt_infotype(vector_UniProt)
 }
 \arguments{
-\item{vector_UniProt}{}
+\item{vector_UniProt}{character vector of UniProt feature strings}
 }
 \description{
 Title

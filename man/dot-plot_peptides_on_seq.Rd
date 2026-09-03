@@ -32,53 +32,53 @@
 )
 }
 \arguments{
-\item{data_peptides}{}
+\item{data_peptides}{tibble of peptides to draw on the sequence}
 
-\item{p}{}
+\item{p}{a ggplot object to add to}
 
-\item{yvalue}{}
+\item{yvalue}{column mapped to the y axis}
 
-\item{color}{}
+\item{color}{column mapped to colour}
 
-\item{color.scale}{}
+\item{color.scale}{named vector of colours for \if{html}{\out{<color>}}}
 
-\item{linewidth}{}
+\item{linewidth}{column mapped to line width}
 
-\item{alpha}{}
+\item{alpha}{column mapped to transparency}
 
-\item{Start}{}
+\item{Start}{column holding the peptide start position}
 
-\item{End}{}
+\item{End}{column holding the peptide end position}
 
-\item{add.length}{}
+\item{add.length}{padding added to each end of the sequence axis}
 
-\item{title}{}
+\item{title}{plot title}
 
-\item{base_size}{}
+\item{base_size}{base font size of the theme}
 
-\item{min_y_range}{}
+\item{min_y_range}{minimum span of the y axis}
 
-\item{protein_width}{}
+\item{protein_width}{height of the protein bar}
 
-\item{protein_range}{}
+\item{protein_range}{residue range to show, as c(start, end)}
 
-\item{add.labels}{}
+\item{add.labels}{label the peptides}
 
-\item{label}{}
+\item{label}{column holding the label text}
 
-\item{label.size}{}
+\item{label.size}{text size of the labels}
 
-\item{nudge_x}{}
+\item{nudge_x}{horizontal nudge passed to ggrepel}
 
-\item{nudge_y}{}
+\item{nudge_y}{vertical nudge passed to ggrepel}
 
-\item{hjust}{}
+\item{hjust}{horizontal justification of the labels}
 
-\item{vjust}{}
+\item{vjust}{vertical justification of the labels}
 
-\item{direction}{}
+\item{direction}{direction ggrepel may move labels in ("both", "x" or "y")}
 
-\item{min.segment.length}{}
+\item{min.segment.length}{shortest leader line ggrepel will draw}
 }
 \description{
 Title

@@ -20,7 +20,9 @@
 \item{adjust.x.limits}{function or list containing two functions
 to be applied to the existing x-axis limits}
 
-\item{adjust.y.limits}{function or list containing two functions
+\item{adjust.y.limits}{function or list containing two functions}
+
+\item{...}{additional arguments passed on to the axis setters
 to be applied to the existing y-axis limits}
 }
 \description{

@@ -16,21 +16,21 @@
 )
 }
 \arguments{
-\item{protein_range}{}
+\item{protein_range}{residue range to show, as c(start, end)}
 
-\item{protein_width}{}
+\item{protein_width}{height of the protein bar}
 
-\item{add.length}{}
+\item{add.length}{padding added to each end of the sequence axis}
 
-\item{x_lab}{}
+\item{x_lab}{x axis label}
 
-\item{y_lab}{}
+\item{y_lab}{y axis label}
 
-\item{color}{}
+\item{color}{column mapped to colour}
 
-\item{alpha}{}
+\item{alpha}{column mapped to transparency}
 
-\item{base_size}{}
+\item{base_size}{base font size of the theme}
 }
 \description{
 Title

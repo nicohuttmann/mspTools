@@ -35,6 +35,8 @@
 
 \item{axis.unit.ratio}{ratio between x- and y-axis units}
 
+\item{coord_fun}{coordinate function to apply (e.g. ggplot2::coord_cartesian)}
+
 \item{expand.x.axis}{expand x.axis (see scale_x_continuous)}
 
 \item{expand.y.axis}{expand x.axis (see scale_y_continuous)}

@@ -21,31 +21,31 @@
 )
 }
 \arguments{
-\item{data_sites}{}
+\item{data_sites}{tibble of sequence features to draw}
 
-\item{p}{}
+\item{p}{a ggplot object to add to}
 
-\item{name}{}
+\item{name}{column holding the feature name}
 
-\item{start}{}
+\item{start}{column holding the feature start position}
 
-\item{end}{}
+\item{end}{column holding the feature end position}
 
-\item{add.length}{}
+\item{add.length}{padding added to each end of the sequence axis}
 
-\item{merge_name_position}{}
+\item{merge_name_position}{merge features that share a name and position}
 
-\item{protein_width}{}
+\item{protein_width}{height of the protein bar}
 
-\item{base_size}{}
+\item{base_size}{base font size of the theme}
 
-\item{multiple_scaling_factor}{}
+\item{multiple_scaling_factor}{vertical scaling applied when features overlap}
 
-\item{legend.position}{}
+\item{legend.position}{legend position, passed to ggplot2::theme()}
 
-\item{legend_width}{}
+\item{legend_width}{width of the legend}
 
-\item{colors_manual}{}
+\item{colors_manual}{named vector of colours for the features}
 }
 \description{
 Title

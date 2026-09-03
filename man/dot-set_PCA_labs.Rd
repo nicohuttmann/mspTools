@@ -7,15 +7,15 @@
 .set_PCA_labs(p, PCx, PCy, sdev, digits = 1)
 }
 \arguments{
-\item{p}{}
+\item{p}{a ggplot object to add to}
 
-\item{PCx}{}
+\item{PCx}{principal component shown on the x axis}
 
-\item{PCy}{}
+\item{PCy}{principal component shown on the y axis}
 
-\item{sdev}{}
+\item{sdev}{vector of standard deviations from the PCA}
 
-\item{digits}{}
+\item{digits}{number of digits shown in the axis labels}
 }
 \description{
 Title

@@ -7,9 +7,9 @@
 backup_scripts(dir, backup_dir)
 }
 \arguments{
-\item{dir}{}
+\item{dir}{folder holding the scripts}
 
-\item{backup_dir}{}
+\item{backup_dir}{folder the backup is written to}
 }
 \description{
 Title

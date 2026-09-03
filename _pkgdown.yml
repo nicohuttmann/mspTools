@@ -1,0 +1,82 @@
+url: https://nicohuttmann.github.io/mspTools/
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#18974C"
+    base_font: {google: "Inter"}
+    code_font: {google: "JetBrains Mono"}
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+
+reference:
+
+- title: UniProt
+  desc: Retrieving and reshaping UniProt records.
+  contents:
+  - get_UniProt_data
+  - get_UniProt_data_o
+  - get_UniProt_data_1o
+  - UniProt_fields
+
+- title: Gene Ontology
+  desc: >
+    GO annotation extracted from UniProt records, with ancestor expansion and
+    ontology filtering.
+  contents:
+  - UniProt_to_T2GO
+  - extract_UniProt_GO2list
+  - extract_UniProt_GO2TERM2GENE
+  - GO_add_ancestors
+  - GO_append_description
+  - GO_filter_ontology
+
+- title: InterPro
+  contents:
+  - get_InterPro_data_from_UniProt
+  - download_UniParc_sequence_features
+
+- title: Protein sequence plots
+  desc: >
+    PELSA-style figures showing peptides and annotated features along a
+    protein sequence.
+  contents:
+  - plot_protein_sequence
+  - .plot_peptides_on_seq
+  - .plot_protein_features
+  - .plot_protein_seq
+  - .extract_UniProt_seqinfo
+  - .identify_UniProt_infotype
+
+- title: Heatmaps
+  contents:
+  - cheatmap
+
+- title: Plotting helpers
+  desc: >
+    The EMBL palette and axis helpers. Colour meanings are fixed per project
+    in `00_Setup.R`, so these give the palette rather than hardcoded hex.
+  contents:
+  - scale_color_embl
+  - scale_fill_embl
+  - .align_axes_limits
+  - .axis_limit_breaks
+  - .get_plot_limits
+  - .rcol
+  - .set_continuous_axes
+  - .set_PCA_labs
+
+- title: Small helpers
+  contents:
+  - bin_percent
+  - max_2
+  - min_2
+  - rev_lvl
+
+- title: Scripts and code
+  contents:
+  - backup_scripts
+  - .cat_contrasts.fit
