@@ -1,0 +1,147 @@
+# mspTools
+
+A biology-focused library of functions to analyze, visualize and report
+proteomics data.
+
+# Installation
+
+You can install this package from GitHub via:
+
+    devtools::install_github("nicohuttmann/mspTools")
+
+or the new, fast way:
+
+    pak::pkg_install("nicohuttmann/mspTools")
+
+mspTools is the biology-facing layer of the msVerse. It builds on
+[msTools](https://nicohuttmann.github.io/msTools/) and
+[msArrow](https://nicohuttmann.github.io/msArrow/), adding annotation
+retrieval and the plots that depend on it.
+
+# What is here
+
+|             |                                                  |
+|-------------|--------------------------------------------------|
+| Annotations | UniProt, GO and InterPro retrieval and curation  |
+| Heatmaps    | `ComplexHeatmap` wrappers over the dataset store |
+| PELSA       | plots for PELSA-style experiments                |
+
+Some annotation functions depend on Bioconductor packages
+(`AnnotationDbi`, `GO.db`, `ComplexHeatmap`); install those first if
+they are not already present.
+
+See the [reference](https://nicohuttmann.github.io/mspTools/reference/)
+for the full list.
+
+# Package index
+
+## UniProt
+
+Retrieving and reshaping UniProt records.
+
+- [`get_UniProt_data()`](https://nicohuttmann.github.io/mspTools/reference/get_UniProt_data.md)
+  : Download UniProt data for given protein accessions and data fields
+  (see available fields with UniProt_fields())
+- [`get_UniProt_data_o()`](https://nicohuttmann.github.io/mspTools/reference/get_UniProt_data_o.md)
+  : Download UniProt data for given protein accessions, taxonomy
+  identifiers and data fields (faster for 1000s of proteins; see
+  available fields with UniProt_fields())
+- [`get_UniProt_data_1o()`](https://nicohuttmann.github.io/mspTools/reference/get_UniProt_data_1o.md)
+  : Download UniProt data for given protein accessions, multiple
+  taxonomy identifiers and data fields (faster for 1000s of proteins;
+  see available fields with UniProt_fields())
+- [`UniProt_fields()`](https://nicohuttmann.github.io/mspTools/reference/UniProt_fields.md)
+  : Return list of vectors of UniProt data fields
+
+## Gene Ontology
+
+GO annotation extracted from UniProt records, with ancestor expansion
+and ontology filtering.
+
+- [`UniProt_to_T2GO()`](https://nicohuttmann.github.io/mspTools/reference/UniProt_to_T2GO.md)
+  : Title
+- [`extract_UniProt_GO2list()`](https://nicohuttmann.github.io/mspTools/reference/extract_UniProt_GO2list.md)
+  : Title
+- [`extract_UniProt_GO2TERM2GENE()`](https://nicohuttmann.github.io/mspTools/reference/extract_UniProt_GO2TERM2GENE.md)
+  : Title
+- [`GO_add_ancestors()`](https://nicohuttmann.github.io/mspTools/reference/GO_add_ancestors.md)
+  : Title
+- [`GO_append_description()`](https://nicohuttmann.github.io/mspTools/reference/GO_append_description.md)
+  : Title
+- [`GO_filter_ontology()`](https://nicohuttmann.github.io/mspTools/reference/GO_filter_ontology.md)
+  : Title
+
+## InterPro
+
+- [`get_InterPro_data_from_UniProt()`](https://nicohuttmann.github.io/mspTools/reference/get_InterPro_data_from_UniProt.md)
+  : Title
+- [`download_UniParc_sequence_features()`](https://nicohuttmann.github.io/mspTools/reference/download_UniParc_sequence_features.md)
+  : Download sequence features data for UniParc sequences
+
+## Protein sequence plots
+
+PELSA-style figures showing peptides and annotated features along a
+protein sequence.
+
+- [`plot_protein_sequence()`](https://nicohuttmann.github.io/mspTools/reference/plot_protein_sequence.md)
+  : Plot PELSA results on a protein sequence including protein domain
+  features
+- [`.plot_peptides_on_seq()`](https://nicohuttmann.github.io/mspTools/reference/dot-plot_peptides_on_seq.md)
+  : Title
+- [`.plot_protein_features()`](https://nicohuttmann.github.io/mspTools/reference/dot-plot_protein_features.md)
+  : Title
+- [`.plot_protein_seq()`](https://nicohuttmann.github.io/mspTools/reference/dot-plot_protein_seq.md)
+  : Title
+- [`.extract_UniProt_seqinfo()`](https://nicohuttmann.github.io/mspTools/reference/dot-extract_UniProt_seqinfo.md)
+  : Extract sequence-specific UniProt information from downloaded data
+- [`.identify_UniProt_infotype()`](https://nicohuttmann.github.io/mspTools/reference/dot-identify_UniProt_infotype.md)
+  : Title
+
+## Heatmaps
+
+- [`cheatmap()`](https://nicohuttmann.github.io/mspTools/reference/cheatmap.md)
+  : Title
+
+## Plotting helpers
+
+The EMBL palette and axis helpers. Colour meanings are fixed per project
+in `00_Setup.R`, so these give the palette rather than hardcoded hex.
+
+- [`scale_color_embl()`](https://nicohuttmann.github.io/mspTools/reference/scale_color_embl.md)
+  : ggplot2 'color' color palette based on EMBL colors from
+  https://www.embl.org/guidelines/design/design-guidelines/colours/
+- [`scale_fill_embl()`](https://nicohuttmann.github.io/mspTools/reference/scale_fill_embl.md)
+  : \#' ggplot2 'fill' color palette based on EMBL colors from
+  https://www.embl.org/guidelines/design/design-guidelines/colours/
+- [`.align_axes_limits()`](https://nicohuttmann.github.io/mspTools/reference/dot-align_axes_limits.md)
+  : Align axis limits of a list of plots
+- [`.axis_limit_breaks()`](https://nicohuttmann.github.io/mspTools/reference/dot-axis_limit_breaks.md)
+  : Helps make nice axis limit breaks
+- [`.get_plot_limits()`](https://nicohuttmann.github.io/mspTools/reference/dot-get_plot_limits.md)
+  : Title
+- [`.rcol()`](https://nicohuttmann.github.io/mspTools/reference/dot-rcol.md)
+  : Returns a randomly generated vector of colors sorted by hue
+- [`.set_continuous_axes()`](https://nicohuttmann.github.io/mspTools/reference/dot-set_continuous_axes.md)
+  : Defines ggplot panel by ratio, size, unit size, center, and axis
+  breaks
+- [`.set_PCA_labs()`](https://nicohuttmann.github.io/mspTools/reference/dot-set_PCA_labs.md)
+  : Title
+
+## Small helpers
+
+- [`bin_percent()`](https://nicohuttmann.github.io/mspTools/reference/bin_percent.md)
+  : Title
+- [`max_2()`](https://nicohuttmann.github.io/mspTools/reference/max_2.md)
+  : Calculate maximum along two vectors
+- [`min_2()`](https://nicohuttmann.github.io/mspTools/reference/min_2.md)
+  : Calculate minimum along two vectors
+- [`rev_lvl()`](https://nicohuttmann.github.io/mspTools/reference/rev_lvl.md)
+  : Reverse the factor level order
+
+## Scripts and code
+
+- [`backup_scripts()`](https://nicohuttmann.github.io/mspTools/reference/backup_scripts.md)
+  : Title
+- [`.cat_contrasts.fit()`](https://nicohuttmann.github.io/mspTools/reference/dot-cat_contrasts.fit.md)
+  : Creates limma contrasts from design matrix
+
