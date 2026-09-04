@@ -81,7 +81,56 @@
 <td>plots for PELSA-style experiments</td>
 </tr>
 </tbody></table>
-<p>Some annotation functions depend on Bioconductor packages (<code>AnnotationDbi</code>, <code>GO.db</code>, <code>ComplexHeatmap</code>); install those first if they are not already present.</p>
+</div>
+<div class="section level1">
+<h1 id="optional-dependencies">Optional dependencies<a class="anchor" aria-label="anchor" href="#optional-dependencies"></a>
+</h1>
+<p>mspTools installs without Bioconductor. The packages only some functions need are in <code>Suggests</code>, and those functions check for them first and tell you how to get them:</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>needed by</th>
+<th>package</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>
+<code><a href="reference/GO_add_ancestors.html">GO_add_ancestors()</a></code>, <code><a href="reference/GO_filter_ontology.html">GO_filter_ontology()</a></code>, <code><a href="reference/GO_append_description.html">GO_append_description()</a></code>
+</td>
+<td>
+<code>GO.db</code>, <code>AnnotationDbi</code>
+</td>
+</tr>
+<tr>
+<td><code><a href="reference/cheatmap.html">cheatmap()</a></code></td>
+<td>
+<code>ComplexHeatmap</code>, <code>ggsci</code>
+</td>
+</tr>
+<tr>
+<td>
+<code><a href="reference/get_UniProt_data.html">get_UniProt_data()</a></code> and variants</td>
+<td><code>vroom</code></td>
+</tr>
+<tr>
+<td><code><a href="reference/download_UniParc_sequence_features.html">download_UniParc_sequence_features()</a></code></td>
+<td><code>httr2</code></td>
+</tr>
+<tr>
+<td>peptide labels in <code><a href="reference/plot_protein_sequence.html">plot_protein_sequence()</a></code>
+</td>
+<td><code>ggrepel</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/cheatmap.html">cheatmap</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: cheatmap() needs the packages "ComplexHeatmap", "ggsci". Install with:</span></span>
+<span><span class="co">#&gt;   BiocManager::install("ComplexHeatmap")</span></span>
+<span><span class="co">#&gt;   install.packages("ggsci")</span></span></code></pre></div>
 <p>See the <a href="https://nicohuttmann.github.io/mspTools/reference/">reference</a> for the full list.</p>
 </div>
 
