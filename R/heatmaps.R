@@ -15,6 +15,8 @@ cheatmap <- function(matrix,
                      show_clusters = NULL, 
                      add_cluster_n = T, 
                      ...) {
+
+  .require_pkg(c("ComplexHeatmap", "ggsci"), "cheatmap")
   
   # Make matrix 
   if (tibble::is_tibble(matrix)) {

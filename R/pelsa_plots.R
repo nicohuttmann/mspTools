@@ -339,6 +339,8 @@
                                   vjust = 0, 
                                   direction = "both", 
                                   min.segment.length = 2) {
+
+  .require_pkg("ggrepel", ".plot_peptides_on_seq")
   
   
   data_p <- data_peptides %>% 
@@ -508,7 +510,7 @@ plot_protein_sequence <- function(data,
     
     p <- p %>% 
       # 3. add peptides on top 
-      .plot_peptides_on_seq(data_peptides = data_peptides_dataset() %>% 
+      .plot_peptides_on_seq(data_peptides = data$data_peptides %>% 
                               filter(Protein.Group == protein) %>% 
                               mutate(peptide_type = "regular") %>% 
                               mutate(pEC50_signed = replace_na(pEC50_signed, 0)) %>% 

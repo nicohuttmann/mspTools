@@ -105,6 +105,8 @@ extract_UniProt_GO2list <- function(data_UniProt_GO,
 #'
 #' @examples
 GO_add_ancestors <- function(goids, ontology = "CC") {
+
+  .require_pkg("GO.db", "GO_add_ancestors")
   
   list_ancestors <- 
     switch(ontology, 
@@ -150,6 +152,8 @@ GO_add_ancestors <- function(goids, ontology = "CC") {
 #'
 #' @examples
 GO_filter_ontology <- function(goids, ontology = "CC") {
+
+  .require_pkg(c("GO.db", "AnnotationDbi"), "GO_filter_ontology")
   
   list_terms <- as.list(GO.db::GOTERM)
   
@@ -195,6 +199,8 @@ GO_filter_ontology <- function(goids, ontology = "CC") {
 #'
 #' @examples
 GO_append_description <- function(goids) {
+
+  .require_pkg(c("GO.db", "AnnotationDbi"), "GO_append_description")
   
   list_terms <- as.list(GO.db::GOTERM)
   

@@ -208,6 +208,8 @@ get_UniProt_data <- function(accession,
                                         "gene_names", 
                                         "organism_name"), 
                              max.query = 100) {
+
+  .require_pkg("vroom", "get_UniProt_data")
   
   # Add accession as field
   if (!"accession" %in% fields) fields <- c("accession", fields)
@@ -246,7 +248,7 @@ get_UniProt_data <- function(accession,
     
     data_download <- vroom::vroom(query_url, 
                                   delim = "\t", 
-                                  col_types = readr::cols())
+                                  col_types = vroom::cols())
     
   }
   
@@ -280,6 +282,8 @@ get_UniProt_data_1o <- function(accession,
                                 taxon_id = c(human = 9606, 
                                              mouse = 10090, 
                                              E.coliK12 = 83333)) {
+
+  .require_pkg("vroom", "get_UniProt_data_1o")
   
   # Check organism identifier
   if (length(taxon_id) > 1) 
@@ -299,7 +303,7 @@ get_UniProt_data_1o <- function(accession,
   
   data_download <- vroom::vroom(query_url, 
                                 delim = "\t", 
-                                col_types = readr::cols())
+                                col_types = vroom::cols())
   
   
   # Merge given accessions and downloaded data 
@@ -337,6 +341,8 @@ get_UniProt_data_o <- function(accession,
                                taxon_ids = c(human = 9606, 
                                             mouse = 10090, 
                                             E.coliK12 = 83333)) {
+
+  .require_pkg("vroom", "get_UniProt_data_o")
   
   # Check organism identifier
   # if (length(taxon_id) > 1) 
@@ -359,7 +365,7 @@ get_UniProt_data_o <- function(accession,
       
       vroom::vroom(query_url, 
                    delim = "\t", 
-                   col_types = readr::cols())}) %>% 
+                   col_types = vroom::cols())}) %>% 
     dplyr::bind_rows()
   
   

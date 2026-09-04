@@ -147,6 +147,8 @@ download_UniParc_sequence_features <- function(uniparc_id,
                                                split.position = T, 
                                                return.sequence = F, 
                                                silent = T) {
+
+  .require_pkg("httr2", "download_UniParc_sequence_features")
   
   if (!hasArg(uniparc_id)) 
     stop("Please provide a UniParc Id.")

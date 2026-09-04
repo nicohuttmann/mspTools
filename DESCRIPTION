@@ -10,38 +10,37 @@ Description: Annotation and visualisation tools for proteomics data, built on
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 URL: https://github.com/nicohuttmann/mspTools,
     https://nicohuttmann.github.io/mspTools/
 BugReports: https://github.com/nicohuttmann/mspTools/issues
 biocViews:
 Imports:
-    AnnotationDbi,
-    ComplexHeatmap,
     dplyr,
-    GO.db,
     ggplot2,
-    ggrepel,
-    ggsci,
-    httr2,
     magrittr,
     methods,
     msTools,
     purrr,
-    readr,
     rlang,
     stats,
     stringr,
     tibble,
-    tidyr,
-    vroom
+    tidyr
 Suggests:
+    AnnotationDbi,
+    ComplexHeatmap,
+    GO.db,
+    ggrepel,
+    ggsci,
+    httr2,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
+    vroom,
     withr
 Remotes:
     nicohuttmann/msArrow,
     nicohuttmann/msTools
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0

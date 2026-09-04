@@ -33,9 +33,26 @@ retrieval and the plots that depend on it.
 | Heatmaps | `ComplexHeatmap` wrappers over the dataset store |
 | PELSA | plots for PELSA-style experiments |
 
-Some annotation functions depend on Bioconductor packages
-(`AnnotationDbi`, `GO.db`, `ComplexHeatmap`); install those first if they are
-not already present.
+# Optional dependencies
+
+mspTools installs without Bioconductor. The packages only some functions need
+are in `Suggests`, and those functions check for them first and tell you how
+to get them:
+
+| needed by | package |
+|---|---|
+| `GO_add_ancestors()`, `GO_filter_ontology()`, `GO_append_description()` | `GO.db`, `AnnotationDbi` |
+| `cheatmap()` | `ComplexHeatmap`, `ggsci` |
+| `get_UniProt_data()` and variants | `vroom` |
+| `download_UniParc_sequence_features()` | `httr2` |
+| peptide labels in `plot_protein_sequence()` | `ggrepel` |
+
+```r
+cheatmap(m)
+#> Error: cheatmap() needs the packages "ComplexHeatmap", "ggsci". Install with:
+#>   BiocManager::install("ComplexHeatmap")
+#>   install.packages("ggsci")
+```
 
 See the [reference](https://nicohuttmann.github.io/mspTools/reference/) for the
 full list.
