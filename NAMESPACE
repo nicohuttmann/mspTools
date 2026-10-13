@@ -33,6 +33,8 @@ export(plot_protein_sequence)
 export(rev_lvl)
 export(scale_color_embl)
 export(scale_fill_embl)
+export(whos_that_protein)
+export(whos_that_proteinx)
 importFrom(dplyr,
   across,
   all_of,

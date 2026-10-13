@@ -383,3 +383,83 @@ get_UniProt_data_o <- function(accession,
   return(data_output)
   
 }
+
+
+#' Get quick information about a protein from its UniProt accession
+#'
+#' @param x protein accession
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#'whos_that_protein("P06993")
+#'}
+whos_that_protein <- function(x) {
+  
+  data_UniProt <- get_UniProt_data(str_extract(x, "[^;]+"), 
+                                   fields = c("gene_primary", 
+                                                 "protein_name", 
+                                                 "organism_name"))
+  
+  cat(
+    paste0("Entry: ", data_UniProt$Entry), 
+    paste0("Gene: ", data_UniProt$`Gene Names (primary)`), 
+    paste0("Description: ", str_extract(data_UniProt$`Protein names`, "[^(]+")), 
+    paste0("Organism: ", data_UniProt$Organism),
+    cli::style_hyperlink(
+      text = "https://www.uniprot.org/uniprotkb/P00363",
+      url = "https://www.uniprot.org/uniprotkb/P00363/"
+    ), 
+    sep = "\n"
+  )
+  
+  return(invisible(data_UniProt$`Gene Names (primary)`))
+}
+
+
+#' Get quick information about a protein from its UniProt accession with 
+#' extra function description 
+#'
+#' @param x protein accession 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+#'\dontrun{
+#'whos_that_proteinx("P06993")
+#'}
+whos_that_proteinx <- function(x) {
+  
+  data_UniProt <- get_UniProt_data(str_extract(x, "[^;]+"), 
+                                   fields = c("gene_primary", 
+                                                 "protein_name", 
+                                                 "organism_name", 
+                                                 "cc_function"))
+  
+  message(paste0("Entry: ", data_UniProt$Entry))
+  message(paste0("Gene: ", data_UniProt$`Gene Names (primary)`)) 
+  message(paste0("Description: ", str_extract(data_UniProt$`Protein names`, "[^(]+"))) 
+  message(paste0("Organism: ", data_UniProt$Organism))
+  message(paste0("Function: ", str_extract(data_UniProt$`Function [CC]`, "[^{]+")))
+  
+  cat(
+    paste0("Entry: ", data_UniProt$Entry), 
+    paste0("Gene: ", data_UniProt$`Gene Names (primary)`), 
+    paste0("Description: ", str_extract(data_UniProt$`Protein names`, "[^(]+")), 
+    paste0("Organism: ", data_UniProt$Organism),
+    "", 
+    paste0("Function: ", str_extract(data_UniProt$`Function [CC]`, "(?<=FUNCTION: )[^{]+")),
+    "", 
+    cli::style_hyperlink(
+      text = "https://www.uniprot.org/uniprotkb/P00363",
+      url = "https://www.uniprot.org/uniprotkb/P00363/"
+    ), 
+    sep = "\n"
+  )
+  
+  return(invisible(data_UniProt$`Gene Names (primary)`))
+}
+
