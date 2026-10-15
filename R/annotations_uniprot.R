@@ -419,6 +419,125 @@ whos_that_protein <- function(x) {
 }
 
 
+
+#' Extract sequence-specific UniProt information from downloaded data 
+#'
+#' @param data_UniProt data frame of proteins and UniProt info as returned by 
+#' get_UniProt_data()
+#' @param info_cols name of column to be extracted
+#' @param rename_cols vector of names to rename extracted columns to (works 
+#' sequentially)
+#' @param remove.na remove proteins without information 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+.extract_UniProt_seqinfo <- function(data_UniProt, 
+                                     info_cols, 
+                                     rename_cols = c("name"), 
+                                     remove.na = T) {
+  
+  if (length(info_cols) == 0) {
+    
+    return(data_UniProt %>% 
+             select(1))
+    
+  } else if (length(info_cols) > 1) {
+    
+    data_output_m <- 
+      purrr::map(setNames(info_cols, info_cols), 
+                 \(x) .extract_UniProt_seqinfo(data_UniProt = data_UniProt, 
+                                               info_cols = x, 
+                                               rename_cols = rename_cols, 
+                                               remove.na = remove.na)) %>% 
+      dplyr::bind_rows(.id = "Source")
+    
+    return(data_output_m)
+    
+  } else {
+    
+    data_name <- data_UniProt[[info_cols]] %>% 
+      na.omit() %>% 
+      str_extract('^[A-Z]+') %>% 
+      unique() 
+    
+    if (length(data_name) == 0) 
+      return(tibble::tibble(!!info_cols := character()))
+    
+    data_separated <- data_UniProt %>% 
+      rename(info_column = !!info_cols) %>% 
+      select(1, info_column) %>% 
+      mutate(info_column = str_replace_all(info_column, 
+                                           paste0("; (?=", data_name, ")"), 
+                                           ";here ")) %>% 
+      separate_longer_delim(cols = info_column, 
+                            delim = ";here ")
+    
+    subfields <- data_separated$info_column %>% 
+      str_extract_all('(?<=/)([a-zA-Z_]+)') %>% 
+      unlist() %>% 
+      na.omit() %>% 
+      unique() 
+    
+    data_output <- data_separated %>% 
+      mutate(type = ifelse(!is.na(info_column), data_name, NA_character_), 
+             position = str_extract(info_column, paste0("(?<=", data_name, " )\\d+\\.\\.\\d+|\\d+")) %>% 
+               str_replace("\\.\\.", "-"), 
+             from = str_extract(position, "[^-]") %>% 
+               as.numeric(), 
+             to = str_extract(position, "[^-]$") %>% 
+               as.numeric())
+    
+    for (i in subfields) {
+      data_output <- data_output %>% 
+        mutate(!!i := str_extract(info_column, paste0('(?<=/', i, '=")[^"]+')) %||% NA)
+    }
+    
+    if (length(rename_cols) > 0 && !is.null(rename_cols) && !is.na(rename_cols)) 
+      for (i in seq_along(rename_cols))
+        data_output <- data_output %>% 
+      dplyr::rename(!!rename_cols[i] := !!subfields[i])
+    
+    if (remove.na) 
+      data_output <- data_output %>% 
+      filter(!is.na(info_column))
+    
+    data_output <- data_output %>% 
+      rename(Info := "info_column") %>% 
+      dplyr::mutate(Source = info_cols, 
+                    .before = "Info")
+    
+    return(data_output)
+    
+  }
+  
+}
+
+
+#' Title
+#'
+#' @param vector_UniProt character vector of UniProt feature strings
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+.identify_UniProt_infotype <- function(vector_UniProt) {
+  
+  if (any(vector_UniProt %>% 
+          na.omit %>% 
+          str_detect("/note|/evidence")))
+    return("sequence_features")
+  else if(any(vector_UniProt %>% 
+              na.omit %>% 
+              str_detect("; ")))
+    return("protein_feature_multiple") 
+  else 
+    return("protein_feature_single")
+}
+
+
 #' Get quick information about a protein from its UniProt accession with 
 #' extra function description 
 #'
