@@ -1,7 +1,7 @@
 #' Title
 #'
 #' @param data_UniProt_GO UniProt data for GO annotations as downloaded by 
-#' get_UniProt_data(ids, fields = UniProt_fields()$`Gene Ontology (GO)`)
+#' get_UniProt_data(ids, fields = .UniProt_fields$`Gene Ontology (GO)`)
 #' @param entry_col protein identifier column 
 #' @param GO_col name of column containing GO annotations to be extracted 
 #'
@@ -45,7 +45,7 @@ extract_UniProt_GO2TERM2GENE <- function(data_UniProt_GO,
 #' Title
 #'
 #' @param data_UniProt_GO UniProt data for GO annotations as downloaded by 
-#' get_UniProt_data(ids, fields = UniProt_fields()$`Gene Ontology (GO)`)
+#' get_UniProt_data(ids, fields = .UniProt_fields$`Gene Ontology (GO)`)
 #' @param entry_col protein identifier column 
 #' @param GO_col name of column containing GO annotations to be extracted 
 #'

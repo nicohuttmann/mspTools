@@ -12,7 +12,7 @@ extract_UniProt_GO2TERM2GENE(
 }
 \arguments{
 \item{data_UniProt_GO}{UniProt data for GO annotations as downloaded by
-get_UniProt_data(ids, fields = UniProt_fields()$\verb{Gene Ontology (GO)})}
+get_UniProt_data(ids, fields = .UniProt_fields$\verb{Gene Ontology (GO)})}
 
 \item{entry_col}{protein identifier column}
 

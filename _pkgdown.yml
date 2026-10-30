@@ -20,6 +20,7 @@ reference:
   - get_UniProt_data
   - get_UniProt_data_o
   - get_UniProt_data_1o
+  - .UniProt_fields
   - UniProt_fields
 
 - title: Gene Ontology

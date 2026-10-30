@@ -3,7 +3,7 @@
 \name{get_UniProt_data}
 \alias{get_UniProt_data}
 \title{Download UniProt data for given protein accessions and data fields
-(see available fields with UniProt_fields())}
+(see available fields with .UniProt_fields)}
 \usage{
 get_UniProt_data(
   accession,
@@ -21,5 +21,5 @@ the number exceeds max.query, the query is split up in multiple parts}
 }
 \description{
 Download UniProt data for given protein accessions and data fields
-(see available fields with UniProt_fields())
+(see available fields with .UniProt_fields)
 }

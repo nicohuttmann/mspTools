@@ -2,12 +2,15 @@
 % Please edit documentation in R/annotations_uniprot.R
 \name{UniProt_fields}
 \alias{UniProt_fields}
-\title{Return list of vectors of UniProt data fields}
+\title{Return list of vectors of UniProt data fields (see .UniProt_fields)}
 \usage{
 UniProt_fields()
 }
+\value{
+named list of named character vectors
+}
 \description{
-Return list of vectors of UniProt data fields
+Return list of vectors of UniProt data fields (see .UniProt_fields)
 }
 \examples{
 UniProt_fields()

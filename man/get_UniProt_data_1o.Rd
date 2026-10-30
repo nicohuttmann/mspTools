@@ -4,7 +4,7 @@
 \alias{get_UniProt_data_1o}
 \title{Download UniProt data for given protein accessions, multiple taxonomy
 identifiers and data fields (faster for 1000s of proteins; see available fields with
-UniProt_fields())}
+.UniProt_fields)}
 \usage{
 get_UniProt_data_1o(
   accession,
@@ -22,5 +22,5 @@ get_UniProt_data_1o(
 \description{
 Download UniProt data for given protein accessions, multiple taxonomy
 identifiers and data fields (faster for 1000s of proteins; see available fields with
-UniProt_fields())
+.UniProt_fields)
 }
